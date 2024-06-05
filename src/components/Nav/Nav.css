@@ -1,0 +1,61 @@
+/* src/components/Nav/Nav.css */
+
+.nav-container {
+  background: linear-gradient(90deg, #000000 0%, #020202 100%);
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.nav-container ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav-container ul li {
+  margin-right: 20px;
+  background-color: rgb(74, 129, 74);
+}
+
+.nav-container ul li a,
+.nav-container ul li button {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav-container ul li a:hover,
+.nav-container ul li button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.nav-container ul li button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.nav-container ul li span {
+  color: #ddd;
+  margin-left: 20px;
+}
+
+.nav-container ul li span img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
+}

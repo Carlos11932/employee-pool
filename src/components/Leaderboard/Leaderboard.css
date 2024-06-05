@@ -1,0 +1,33 @@
+
+.leaderboard-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .leaderboard-container h3 {
+    text-align: center;
+  }
+  
+  .leaderboard-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .leaderboard-container ul li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .leaderboard-container ul li img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
