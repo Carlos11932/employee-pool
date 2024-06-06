@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { setAuthedUser } from '../../actions/authedUser';
-import { Navigate } from 'react-router-dom';
 import './Login.css';
 
 const Login = () => {
   const [user, setUser] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const users = useSelector(state => state.users);
-  const authedUser = useSelector(state => state.authedUser);
 
   const handleChange = (e) => {
     setUser(e.target.value);
@@ -16,16 +16,17 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(setAuthedUser(user));
+    if (user) {
+      dispatch(setAuthedUser(user));
+      localStorage.setItem('authedUser', user);
+      const lastRequestedPage = localStorage.getItem(`lastRequestedPage_${user}`);
+      if (lastRequestedPage) {
+        navigate(lastRequestedPage);
+      } else {
+        navigate('/');
+      }
+    }
   };
-
-  if (authedUser) {
-    return <Navigate to="/" />;
-  }
-
-  if (!users || Object.keys(users).length === 0) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className="login-container">

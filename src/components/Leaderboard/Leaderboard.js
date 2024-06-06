@@ -23,7 +23,7 @@ const Leaderboard = () => {
               src={user.avatarURL || 'https://via.placeholder.com/150'}
               alt={`Avatar of ${user.name}`}
             />
-            <p><strong>{user.name}</strong></p>
+            <p><strong>{user.name}   </strong></p>
             <p>Questions created: {user.questions.length}</p>
             <p>Questions answered: {Object.keys(user.answers).length}</p>
           </li>

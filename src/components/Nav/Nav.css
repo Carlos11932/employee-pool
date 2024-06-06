@@ -1,4 +1,3 @@
-/* src/components/Nav/Nav.css */
 
 .nav-container {
   background: linear-gradient(90deg, #000000 0%, #020202 100%);
@@ -52,10 +51,36 @@
   margin-left: 20px;
 }
 
-.nav-container ul li span img {
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info img {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   margin-right: 10px;
-  vertical-align: middle;
+}
+
+.logout-container {
+  display: flex;
+  align-items: center;
+}
+
+.logout-button {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  transition: background 0.3s, color 0.3s;
+}
+
+.logout-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }

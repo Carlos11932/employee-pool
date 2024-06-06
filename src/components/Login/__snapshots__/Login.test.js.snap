@@ -2,8 +2,72 @@
 
 exports[`Login should match snapshot 1`] = `
 <DocumentFragment>
-  <div>
-    Loading...
+  <div
+    class="login-container"
+  >
+    <h2>
+      Login
+    </h2>
+    <form>
+      <select>
+        <option
+          value=""
+        >
+          Select a user
+        </option>
+        <option
+          value="sarahedo"
+        >
+          Sarah Edo
+        </option>
+        <option
+          value="tylermcginnis"
+        >
+          Tyler McGinnis
+        </option>
+      </select>
+      <button
+        type="submit"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Login should render login component 1`] = `
+<DocumentFragment>
+  <div
+    class="login-container"
+  >
+    <h2>
+      Login
+    </h2>
+    <form>
+      <select>
+        <option
+          value=""
+        >
+          Select a user
+        </option>
+        <option
+          value="sarahedo"
+        >
+          Sarah Edo
+        </option>
+        <option
+          value="tylermcginnis"
+        >
+          Tyler McGinnis
+        </option>
+      </select>
+      <button
+        type="submit"
+      >
+        Login
+      </button>
+    </form>
   </div>
 </DocumentFragment>
 `;

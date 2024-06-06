@@ -7,13 +7,19 @@ import Home from './components/Home/Home';
 import NewPoll from './components/NewPoll/NewPoll';
 import Leaderboard from './components/Leaderboard/Leaderboard';
 import PollDetails from './components/PollDetails/PollDetails';
+import NotFound from './components/NotFound/NotFound';
 import LoadingBar from "react-redux-loading-bar";
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
+import { setAuthedUser } from './actions/authedUser';
 import './App.css';
 
 const App = (props) => {
   useEffect(() => {
+    const savedUser = localStorage.getItem('authedUser');
+    if (savedUser) {
+      props.dispatch(setAuthedUser(savedUser));
+    }
     props.dispatch(handleInitialData());
   }, [props]);
 
@@ -27,13 +33,27 @@ const App = (props) => {
         ) : (
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route element={<ProtectedRoute />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/add" element={<NewPoll />} />
-              <Route path="/leaderboard" element={<Leaderboard />} />
-              <Route path="/questions/:question_id" element={<PollDetails />} />
-            </Route>
-            <Route path="*" element={<Navigate to="/login" />} />
+            <Route path="/" element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            } />
+            <Route path="/add" element={
+              <ProtectedRoute>
+                <NewPoll />
+              </ProtectedRoute>
+            } />
+            <Route path="/leaderboard" element={
+              <ProtectedRoute>
+                <Leaderboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/questions/:question_id" element={
+              <ProtectedRoute>
+                <PollDetails />
+              </ProtectedRoute>
+            } />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         )}
       </div>

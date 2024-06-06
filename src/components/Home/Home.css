@@ -5,6 +5,7 @@
     padding: 20px;
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
   }
   
   .home-container h3 {
@@ -31,4 +32,25 @@
   
   .home-container ul li a:hover {
     text-decoration: underline;
+  }
+  
+  .toggle-buttons {
+    margin-bottom: 20px;
+  }
+  
+  .toggle-buttons button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .questions-list {
+    margin-top: 20px;
+  }
+  
+  .question-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
   }

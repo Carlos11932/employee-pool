@@ -31,3 +31,7 @@
     height: 50px;
     margin-right: 10px;
   }
+
+  .leaderboard-container p {
+    margin-right: 20px;
+  }

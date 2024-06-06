@@ -24,9 +24,14 @@
   }
   
   .poll-results .option {
-    margin-top: 10px;
     padding: 10px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+
+  .poll-results .option.selected {
+    background-color: #d3f9d8;
   }

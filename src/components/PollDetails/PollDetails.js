@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { handleSaveQuestionAnswer } from '../../actions/questions';
 import './PollDetails.css';
 
@@ -10,14 +10,16 @@ const PollDetails = () => {
   const authedUser = useSelector(state => state.authedUser);
   const users = useSelector(state => state.users);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   if (!question) {
-    return <p>The poll does not exist</p>;
+    navigate('/404');
+    return null;
   }
 
   const author = users[question.author];
-
   const hasVoted = question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser);
+  
   const handleVote = (answer) => {
     dispatch(handleSaveQuestionAnswer({
       authedUser,
@@ -35,11 +37,11 @@ const PollDetails = () => {
       </div>
       {hasVoted ? (
         <div className="poll-results">
-          <div className="option">
+          <div className={`option ${question.optionOne.votes.includes(authedUser) ? 'selected' : ''}`}>
             <p>{question.optionOne.text}</p>
             <p>{question.optionOne.votes.length} vote(s) ({((question.optionOne.votes.length / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100).toFixed(2)}%)</p>
           </div>
-          <div className="option">
+          <div className={`option ${question.optionTwo.votes.includes(authedUser) ? 'selected' : ''}`}>
             <p>{question.optionTwo.text}</p>
             <p>{question.optionTwo.votes.length} vote(s) ({((question.optionTwo.votes.length / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100).toFixed(2)}%)</p>
           </div>
