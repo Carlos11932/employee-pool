@@ -11,10 +11,18 @@ const Nav = () => {
   const users = useSelector(state => state.users);
 
   const handleLogout = () => {
-    if (authedUser) {
-      localStorage.removeItem('lastRequestedPage');
+    const currentPath = window.location.pathname;
+    const validRoutes = ['/add', '/leaderboard', '/questions'];
+    const isValidRoute = validRoutes.some(route => currentPath.startsWith(route));
+
+    if (isValidRoute && authedUser) {
+      localStorage.setItem(`lastRequestedPage_${authedUser}`, currentPath);
+    } else {
+      localStorage.removeItem(`lastRequestedPage_${authedUser}`);
     }
+
     dispatch(setAuthedUser(null));
+    localStorage.removeItem('authedUser');
     navigate('/login');
   };
 

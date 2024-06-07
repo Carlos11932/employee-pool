@@ -1,6 +1,7 @@
 import { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "./actions/shared";
+import { setAuthedUser } from "./actions/authedUser";
 import Nav from "./components/Nav/Nav";
 import Login from "./components/Login/Login";
 import Home from './components/Home/Home';
@@ -16,6 +17,10 @@ import './App.css';
 const App = (props) => {
   useEffect(() => {
     props.dispatch(handleInitialData());
+    const authedUser = localStorage.getItem('authedUser');
+    if (authedUser) {
+      props.dispatch(setAuthedUser(authedUser));
+    }
   }, [props]);
 
   return (
