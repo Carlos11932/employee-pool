@@ -18,10 +18,10 @@ const Login = () => {
     e.preventDefault();
     if (user) {
       dispatch(setAuthedUser(user));
-      localStorage.setItem('authedUser', user);
-      const lastRequestedPage = localStorage.getItem(`lastRequestedPage_${user}`);
+      const lastRequestedPage = localStorage.getItem('lastRequestedPage');
       if (lastRequestedPage) {
         navigate(lastRequestedPage);
+        localStorage.removeItem('lastRequestedPage');
       } else {
         navigate('/');
       }

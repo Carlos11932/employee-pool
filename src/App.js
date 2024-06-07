@@ -9,17 +9,12 @@ import Leaderboard from './components/Leaderboard/Leaderboard';
 import PollDetails from './components/PollDetails/PollDetails';
 import NotFound from './components/NotFound/NotFound';
 import LoadingBar from "react-redux-loading-bar";
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
-import { setAuthedUser } from './actions/authedUser';
 import './App.css';
 
 const App = (props) => {
   useEffect(() => {
-    const savedUser = localStorage.getItem('authedUser');
-    if (savedUser) {
-      props.dispatch(setAuthedUser(savedUser));
-    }
     props.dispatch(handleInitialData());
   }, [props]);
 
@@ -53,7 +48,8 @@ const App = (props) => {
                 <PollDetails />
               </ProtectedRoute>
             } />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<Navigate to="/404" />} />
           </Routes>
         )}
       </div>

@@ -18,7 +18,7 @@ Employee Polls is an application that allows employees to create polls, vote on 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/employee-polls.git
+   git clone https://github.com/Carlos11932/employee-polls.git
    cd employee-polls
 
 2. Install dependencies:

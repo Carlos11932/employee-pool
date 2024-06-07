@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import { handleSaveQuestionAnswer } from '../../actions/questions';
 import './PollDetails.css';
 
@@ -10,11 +10,9 @@ const PollDetails = () => {
   const authedUser = useSelector(state => state.authedUser);
   const users = useSelector(state => state.users);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   if (!question) {
-    navigate('/404');
-    return null;
+    return <Navigate to="/404" />;
   }
 
   const author = users[question.author];

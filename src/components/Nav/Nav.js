@@ -11,16 +11,9 @@ const Nav = () => {
   const users = useSelector(state => state.users);
 
   const handleLogout = () => {
-    const currentPath = window.location.pathname;
-    const validRoutes = ['/add', '/leaderboard', '/questions'];
-    const isValidRoute = validRoutes.some(route => currentPath.startsWith(route));
-
-    if (isValidRoute && authedUser) {
-      localStorage.setItem(`lastRequestedPage_${authedUser}`, currentPath);
-    } else {
-      localStorage.removeItem(`lastRequestedPage_${authedUser}`);
+    if (authedUser) {
+      localStorage.removeItem('lastRequestedPage');
     }
-    localStorage.removeItem('authedUser')
     dispatch(setAuthedUser(null));
     navigate('/login');
   };
@@ -31,13 +24,13 @@ const Nav = () => {
         {authedUser && (
           <>
             <li>
-              <Link to="/" >Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/add" >New Poll</Link>
+              <Link to="/add">New Poll</Link>
             </li>
             <li>
-              <Link to="/leaderboard" >Leaderboard</Link>
+              <Link to="/leaderboard">Leaderboard</Link>
             </li>
           </>
         )}
