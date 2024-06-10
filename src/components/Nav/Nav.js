@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -16,13 +17,13 @@ const Nav = () => {
     const isValidRoute = validRoutes.some(route => currentPath.startsWith(route));
 
     if (isValidRoute && authedUser) {
-      localStorage.setItem(`lastRequestedPage_${authedUser}`, currentPath);
+      localStorage.setItem(`lastRequestedPage`, currentPath);
     } else {
-      localStorage.removeItem(`lastRequestedPage_${authedUser}`);
+      localStorage.removeItem(`lastRequestedPage`);
     }
 
-    dispatch(setAuthedUser(null));
     localStorage.removeItem('authedUser');
+    dispatch(setAuthedUser(null));
     navigate('/login');
   };
 
@@ -32,13 +33,13 @@ const Nav = () => {
         {authedUser && (
           <>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" >Home</Link>
             </li>
             <li>
-              <Link to="/add">New Poll</Link>
+              <Link to="/add" >New Poll</Link>
             </li>
             <li>
-              <Link to="/leaderboard">Leaderboard</Link>
+              <Link to="/leaderboard" >Leaderboard</Link>
             </li>
           </>
         )}

@@ -1,7 +1,7 @@
+
 import { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "./actions/shared";
-import { setAuthedUser } from "./actions/authedUser";
 import Nav from "./components/Nav/Nav";
 import Login from "./components/Login/Login";
 import Home from './components/Home/Home';
@@ -10,9 +10,10 @@ import Leaderboard from './components/Leaderboard/Leaderboard';
 import PollDetails from './components/PollDetails/PollDetails';
 import NotFound from './components/NotFound/NotFound';
 import LoadingBar from "react-redux-loading-bar";
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
+import { setAuthedUser } from "./actions/authedUser";
 
 const App = (props) => {
   useEffect(() => {
@@ -54,7 +55,7 @@ const App = (props) => {
               </ProtectedRoute>
             } />
             <Route path="/404" element={<NotFound />} />
-            <Route path="*" element={<Navigate to="/404" />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         )}
       </div>

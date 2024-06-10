@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -18,11 +19,10 @@ const Login = () => {
     e.preventDefault();
     if (user) {
       dispatch(setAuthedUser(user));
-      localStorage.setItem('authedUser', user);
       const lastRequestedPage = localStorage.getItem('lastRequestedPage');
       if (lastRequestedPage) {
-        navigate(lastRequestedPage);
         localStorage.removeItem('lastRequestedPage');
+        navigate(lastRequestedPage);
       } else {
         navigate('/');
       }
